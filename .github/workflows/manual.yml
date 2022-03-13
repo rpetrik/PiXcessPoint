@@ -1,0 +1,33 @@
+name: Manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      pifile:
+        description: "path/to/pifile (without extension)"
+        default: main
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Build image
+        uses: Nature40/pimod@v0.4.4
+        with:
+          pifile: ${{ github.event.inputs.pifile }}.Pifile
+
+      - name: Make tarball
+        run: |
+          tar -czvf image.tar.gz image.img
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ github.workflow }}-${{ github.sha }}.zip
+          path: ${{ github.event.inputs.pifile }}.img

@@ -1,0 +1,5 @@
+# Raspios-lite image
+FROM https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2022-01-28/2022-01-28-raspios-bullseye-armhf-lite.zip
+
+PUMP 100M
+
