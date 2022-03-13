@@ -24,7 +24,7 @@ jobs:
 
       - name: Make tarball
         run: |
-          tar -czvf image.tar.gz image.img
+          tar -czvf main.tar.gz main.img
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
