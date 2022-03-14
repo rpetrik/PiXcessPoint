@@ -3,3 +3,12 @@ FROM https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_ar
 
 PUMP 100M
 
+# Sets up env from .env and secrets.env for this Pifile
+# Usually included as the first line after a FROM/TO/INPLACE
+INCLUDE modules/core.Pifile
+
+# Sets up as WiFi Access Point
+INCLUDE modules/wifi_ap.Pifile
+
+# Enable SSH
+INCLUDE modules/ssh.Pifile

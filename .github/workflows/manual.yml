@@ -18,7 +18,7 @@ jobs:
           submodules: recursive
 
       - name: Build image
-        uses: Nature40/pimod@v0.4.4
+        uses: Nature40/pimod@master
         with:
           pifile: ${{ github.event.inputs.pifile }}.Pifile
 
