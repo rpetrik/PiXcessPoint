@@ -23,11 +23,10 @@ jobs:
           pifile: ${{ github.event.inputs.pifile }}.Pifile
 
       - name: Make tarball
-        run: |
-          tar -czvf main.tar.gz main.img
+        run: tar -czvf main.tar.gz main.img
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ github.workflow }}-${{ github.sha }}.zip
-          path: ${{ github.event.inputs.pifile }}.img
+          name: ${{ github.workflow }}-${{ github.sha }}.tar.gz
+          path: main.tar.gz
