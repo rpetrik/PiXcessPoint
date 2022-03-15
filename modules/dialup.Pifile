@@ -1,0 +1,4 @@
+# Configure Dial-up settings
+
+# Install dependencies
+RUN apt install -y ppp wvdial

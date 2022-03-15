@@ -11,20 +11,20 @@ RUN bash -c "echo -e 'interface wlan0\n    static ip_address=192.168.0.1/24\n   
 
 # Configure the dnsmasq DHCPd
 RUN << EOF
-echo '
+bash -c "echo '
 interface=wlan0 # Listening interface
-dhcp-range=192.168.0.20,192.168.4.254,255.255.255.0,24h
+dhcp-range=192.168.0.20,192.168.0.254,255.255.255.0,24h
                 # Pool of IP addresses served via DHCP
 domain=wlan     # Local wireless DNS domain
 address=/gw.wlan/192.168.0.1
                 # Alias for this router
-' >> /etc/dnsmasq.conf
+' > /etc/dnsmasq.conf"
 EOF
 
 RUN rfkill unblock wlan
 
 RUN << EOF
-echo '
+bash -c "echo '
 country_code=GB
 interface=wlan0
 ssid=PiXcessPoint
@@ -34,9 +34,9 @@ macaddr_acl=0
 auth_algs=1
 ignore_broadcast_ssid=0
 wpa=2
-wpa_passphrase=iridium
+wpa_passphrase=5WUpQ3zL
 wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
-' >> /etc/hostapd/hostapd.conf
+' > /etc/hostapd/hostapd.conf"
 EOF
